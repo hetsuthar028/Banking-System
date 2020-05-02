@@ -502,3 +502,186 @@ def checkData(accno,pin):
     except Exception as e:
         print(e)
 
+class Create7:
+    def __init__(self):
+        self.root = Tk(className = " Create New Bank Account")
+        self.root.geometry("600x600")
+        self.root.config(bg = "#FDFBF2")
+        self.create_widgets()
+        self.count = 0
+        self.myFont = font.Font(family = 'Times', weight = 'bold')          
+    def create_widgets(self):
+        self.lbHeader = Label(self.root, text = "Login / Create New Account", font = "Times 30 bold",fg = "red2")
+        #self.lbHeader.config(font = 30)
+        self.lbHeader.place(x = 50, y = 20)
+        
+        ### Draw a rectangle over there and then show the buttons i.e. login form ###
+        self.lbACCNODISP = Label(self.root, text = " Account No : ", font = "Courier 15 bold", fg = "navy")
+        self.lbACCNODISP.place(x = 120,y = 120)
+        self.entACCNO = Entry(self.root, bd = 3)
+        self.entACCNO.place(x = 320, y = 120)
+        self.lbPIN = Label(self.root, text = "        Pin : ", font = "Courier 15 bold", fg = "navy")
+        self.lbPIN.place(x = 120, y= 160)
+        self.entPIN = Entry(self.root, bd = 3)
+        self.entPIN.place(x = 320, y = 160)
+        
+        self.btnSubmit = Button(self.root, text = "Submit", command = self.passval, font = "Times 10 bold", border = 5, width = 15, bg='dodger blue')
+        #self.btnSubmit.config(command = checkData)
+        self.btnSubmit.place(x = 230,y = 210)
+        
+        self.lbFooter = Label(self.root, text = "Don't have account? Create new Account", font = "Helventica 10 bold italic")
+        self.lbFooter.place(x = 170,y = 280)
+        self.btn = Button(self.root, text = "Create Account", command = window1, bg='dodger blue', font = "Times 10 bold", border = 5, width = 15 )
+        self.btn.place(x = 230,y = 320)
+        
+    """
+    def checkData(self):
+        self.con = pymysql.connect(host="localhost",user="root",passwd="", database="PyBank")
+        self.cursor = self.con.cursor()
+        self.cursor.execute("SELECT PASSWORD, ACC_NO FROM bank_accounts where ACC_NO = '%s'"%(self.entACCNO.get()))
+        
+        for i in self.cursor:
+            self.l = i[0]
+        if str(self.l) == str(self.entPIN.get()) and self.count < 2:
+            window2()
+        else:
+            messagebox.showerror("Information","Password Does not match")                
+            window1()
+            self.count = self.count + 1
+            print(self.count)
+    """
+    def passval(self):
+        a = self.entACCNO.get()
+        b = self.entPIN.get()
+        getval2(a,b)
+        
+    
+    
+class Create6:
+    def __init__(self):
+        self.root = Tk(className = " Create New Bank Account")
+        self.root.config(bg = "#FDFBF2")
+        self.root.geometry("600x700")
+        self.create_widgets()
+    def create_widgets(self):
+        self.lbHead = Label(self.root,text = " Create New Account ", fg = "red2", font = "Times 30 bold")
+        self.lbHead.place(x = 100,y = 20)
+        self.lbFName  = Label(self.root, text = "First Name : ", font = "Courier 13 bold", fg = "navy")
+        self.lbFName.place(x = 120, y = 100)
+        self.lbMName = Label(self.root, text = "Middle Name : ", font = "Courier 13 bold", fg = "navy")
+        self.lbMName.place(x = 120, y = 140)
+        self.lbLName = Label(self.root, text = "Last Name : ", font = "Courier 13 bold", fg = "navy")
+        self.lbLName.place(x = 120, y = 180)
+        self.lbMobno = Label(self.root, text = "Mobile Number : ", font = "Courier 13 bold", fg = "navy")
+        self.lbMobno.place(x = 120, y = 220)
+        self.lbAdd = Label(self.root, text = "Address : ", font = "Courier 13 bold", fg = "navy")
+        self.lbAdd.place(x = 120, y = 260)
+        self.lbDOB = Label(self.root, text = "Date of Birth : ", font = "Courier 13 bold", fg = "navy")
+        self.lbDOB.place(x = 120, y = 300)
+        self.lbGender = Label(self.root, text = "Gender : ", font = "Courier 13 bold", fg = "navy")
+        self.lbGender.place(x = 120, y = 340)
+        self.lbEmail = Label(self.root, text = "Email Add. : ", font = "Courier 13 bold", fg = "navy")
+        self.lbEmail.place(x = 120, y = 380)
+        self.lbEmpStatus  = Label(self.root, text = "Employement Status : ", font = "Courier 13 bold", fg = "navy")
+        self.lbEmpStatus.place(x = 120, y = 420)
+        self.lbCurrBal1 = Label(self.root, text = "Current Balance : ", font = "Courier 13 bold", fg = "navy")
+        self.lbCurrBal1.place(x = 120, y = 460)
+        
+        self.entFName = Entry(self.root, bd=3)
+        self.entFName.place(x = 350, y = 100)
+        self.entMName = Entry(self.root,bd=3)
+        self.entMName.place(x = 350, y = 140)
+        self.entLName = Entry(self.root,bd=3)
+        self.entLName.place(x = 350, y = 180)
+        self.entMobNo= Entry(self.root,bd=3)
+        self.entMobNo.place(x = 350, y = 220)
+        self.entAdd = Entry(self.root,bd=3)
+        self.entAdd.place(x = 350, y = 260)
+        self.entDOB = Entry(self.root,bd=3)
+        self.entDOB.place(x = 350, y = 300)
+        self.v = StringVar(self.root)
+        self.rbg1 = Radiobutton(self.root, text = "Male", variable = self.v, value = "Male")
+        self.rbg1.place(x = 350, y = 340)
+        self.rbg2 = Radiobutton(self.root, text = "Female", variable = self.v, value = "Female")
+        self.rbg2.place(x = 420, y = 340)
+        self.entEmail = Entry(self.root,bd=3)
+        self.entEmail.place(x = 350, y = 380)
+        self.v1 = StringVar(self.root)
+        self.cbEmpStatus = ttk.Combobox(self.root, values = ["Labourer", "Farming/ Fishing","Retail trading","Business", "Engineer","Medical","Teaching","Civil Servant","Student"])
+        self.cbEmpStatus.place(x = 350, y = 420)
+        self.cbEmpStatus.current(0)
+        self.lbCurrBal = Entry(self.root, bd=3)
+        self.lbCurrBal.place(x = 350, y = 460)
+        
+        self.btnAadharCard = Button(self.root, text = "Upload Aadhar Card",command  = self.take, font="Courier 12 bold", fg="white", activeforeground = "white",bg = "red2")
+        #self.btnAadharCard.config(command = try1)
+        self.btnAadharCard.place(x = 220, y = 500)
+        self.btnPersonalPhoto = Button(self.root, text = "Upload Passpord Size Photo", command = self.take2, font="Courier 12 bold", fg="white", activeforeground = "white",bg = "red2")
+        self.btnPersonalPhoto.place(x = 180, y = 550)
+        #self.btnAadharCard.config(command = getval(self.entFName.get()))
+        
+        
+        self.btnSubmit = Button(self.root, text = "Submit", command = self.submitData,width ="35", bg = "navy", fg = "white", activeforeground="navy", activebackground = "white", font = "Courier 14 bold")
+        self.btnSubmit.place(x = 120, y = 600)
+        
+    def submitData(self):
+        
+        
+        self.con = pymysql.connect(host="localhost",user="root",passwd="", database="PyBank")
+        self.cursor = self.con.cursor()
+        self.cursor.execute("select Account_No from imp_values")
+        for i in self.cursor:
+            self.ACC = int(i[0])
+        
+        regex = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+        
+        directory= r"C:/wamp64/www/Banking_System/Logs_Client"
+        os.chdir(directory)
+        fileName = str(self.ACC) + ".log"
+    
+        with open(fileName, 'w') as f:
+             f.write("Account Created ---- " + str(datetime.datetime.today())  + " --- ACCNO  = " + str(self.ACC))
+        
+        
+        
+        if int(self.lbCurrBal.get())>500:
+            if (re.search(regex, self.entEmail.get())):
+                self.sm = simpledialog.askinteger("PIN","Enter a new security PIN", parent = self.root)
+                query= "INSERT INTO bank_accounts VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"%(self.entFName.get(),\
+                                                 self.entMName.get(),self.entLName.get(), self.entMobNo.get(), self.entAdd.get(),\
+                                                 self.entDOB.get(), self.v.get(), self.entEmail.get(), self.cbEmpStatus.get(),l[0],l[1], self.ACC, self.sm, self.lbCurrBal.get())
+                query2 ="INSERT INTO Log_Clients VALUES('%s','%s')"%(self.ACC, directory + fileName)
+                connection("PyBank",query)
+                connection("PyBank",query2)
+                messagebox.showinfo("Information","Account Create Successfully!!")
+                self.ACC = self.ACC + 2
+                self.cursor.execute("UPDATE imp_values set Account_no = '%s'"%(self.ACC));
+                self.con.commit()
+                self.cursor.execute("select Account_Count from pybank_details")
+                
+                for i in self.cursor:
+                    data = int(i[0])
+                data = data + 1
+                print("Data is : ",data)
+                connection("PyBank","update pybank_details set Account_Count = '%s'"%(str(data)))
+                bankMoney(float(self.lbCurrBal.get()),'+')
+            else:
+                messagebox.showwarning("Warning","Invalid Email Address")
+        else:
+            messagebox.showwarning("Information","Minimum balance should be 500 Rs.")
+           
+    def take(self):
+        a = self.entFName.get()
+        b = self.entLName.get()
+        c = self.entMobNo.get()
+        c = c[:5]
+        #print(a)
+        getval(a,b,c,0)
+    
+    def take2(self):
+        a = self.entFName.get()
+        b = self.entLName.get()
+        c = self.entMobNo.get()
+        c = c[:5]
+        #print(a)
+        getval(a,b,c,1)
