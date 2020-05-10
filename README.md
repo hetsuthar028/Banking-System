@@ -12,4 +12,4 @@ They have the facility to credit, deposit, money transfer, Pin-regeneration and 
 At every event a log file is updated for each things.
 Every user's has one log file about their account activities.
 
-Please follow me on LinkedIn: https://www.linkedin.com/in/het-suthar-79639a179/
+Please do follow me on LinkedIn: https://www.linkedin.com/in/het-suthar-79639a179/
