@@ -31,10 +31,9 @@ def window2():
     cr5 = Create5()
 
 def window3():
-    root = Tk(className = " Create Bank Account")
-    root.geometry("512x512")
-    Create8(root)
-    mainloop()
+
+    cr8 = Create8()
+    
 
 
 def logs(fileName,msg):
@@ -88,10 +87,11 @@ def connection(db= None,query = None):
     except pymysql.DatabaseError as e:
         print(e)
 
-class Create8(Frame):
-    def __init__(self,master):
-        Frame.__init__(self,master)
-        self.pack()
+class Create8():
+    def __init__(self):
+        self.root = Tk(className = " Update Account Information ")
+        self.root.geometry("600x800")
+        self.root.config(bg = "#FDFBF2")
         self.create_widgets()
     
     def getData(self):
@@ -106,89 +106,68 @@ class Create8(Frame):
         
                 
     def create_widgets(self):
+        
         self.getData()
+        self.lbFName  = Label(self.root, text = "First Name : ", font = "Courier 13 bold", fg = "navy")
+        self.lbFName.place(x = 120, y = 100)
+        self.lbMName = Label(self.root, text = "Middle Name : ", font = "Courier 13 bold", fg = "navy")
+        self.lbMName.place(x = 120, y = 140)
+        self.lbLName = Label(self.root, text = "Last Name : ", font = "Courier 13 bold", fg = "navy")
+        self.lbLName.place(x = 120, y = 180)
+        self.lbMobno = Label(self.root, text = "Mobile Number : ", font = "Courier 13 bold", fg = "navy")
+        self.lbMobno.place(x = 120, y = 220)
+        self.lbAdd = Label(self.root, text = "Address : ", font = "Courier 13 bold", fg = "navy")
+        self.lbAdd.place(x = 120, y = 260)
+        self.lbDOB = Label(self.root, text = "Date of Birth : ", font = "Courier 13 bold", fg = "navy")
+        self.lbDOB.place(x = 120, y = 300)
+        self.lbGender = Label(self.root, text = "Gender : ", font = "Courier 13 bold", fg = "navy")
+        self.lbGender.place(x = 120, y = 340)
+        self.lbEmail = Label(self.root, text = "Email Add. : ", font = "Courier 13 bold", fg = "navy")
+        self.lbEmail.place(x = 120, y = 380)
+        self.lbEmpStatus  = Label(self.root, text = "Employement Status : ", font = "Courier 13 bold", fg = "navy")
+        self.lbEmpStatus.place(x = 120, y = 420)
+        self.lbCurrBal1 = Label(self.root, text = "Current Balance : ", font = "Courier 13 bold", fg = "navy")
+        self.lbCurrBal1.place(x = 120, y = 460)
+        self.lbACC = Label(self.root, text = "Account Number : ", font = "Courier 13 bold", fg = "navy")
+        self.lbACC.place(x = 120, y = 500)
+        self.lbAnsFName = Label(self.root, text = self.l[0], font = "Courier 13 bold", fg = "navy")
+        self.lbAnsFName.place(x = 350, y = 100)
+        self.lbAnsMName = Label(self.root, text = self.l[1], font = "Courier 13 bold", fg = "navy")
+        self.lbAnsMName.place(x = 350, y = 140)
         
-        self.entACC = Label(self, text = self.l[11])
-        #self.entACC.insert(0,self.l[12])
-        self.entACC.pack()
-        
-        self.entFName = Label(self, text = self.l[0])
-        #self.entFName.insert(0, self.l[0])
-        self.entFName.pack()
-        self.entMName = Label(self, text = self.l[1])
-        #self.entMName.insert(0,self.l[1])
-        self.entMName.pack()
-        self.entLName = Label(self, text = self.l[2])
-        #self.entLName.insert(0,self.l[2])
-        self.entLName.pack()
-        self.entMobNo = Entry(self)
-        self.entMobNo.insert(0,self.l[3])
-        self.entMobNo.pack()
-        self.entAdd = Entry(self)
-        self.entAdd.insert(0,self.l[4])
-        self.entAdd.pack()
-        self.entDOB = Label(self, text = self.l[5])
-        #self.entDOB.insert(0,self.l[5])
-        self.entDOB.pack()
-        
-        self.entGend = Label(self, text = self.l[6])
-        #self.entGend.insert(0,self.l[6])
-        self.entGend.pack()
-        
-        self.entEmail = Entry(self)
-        self.entEmail.insert(0,self.l[7])
-        self.entEmail.pack()
-        self.v1 = StringVar(self)
-        self.cbEmpStatus = ttk.Combobox(self, values = ["Labourer", "Farming/ Fishing","Retail trading","Business", "Engineer","Medical","Teaching","Civil Servant","Student"])
-        
-        self.cbEmpStatus.pack()
+        self.entLName = Entry(self.root,bd=3)
+        self.entLName.insert(0, self.l[2])
+        self.entLName.place(x = 350, y = 180)
+        self.entMobNo= Label(self.root, text = self.l[3], font = "Courier 13 bold", fg = "navy")
+        self.entMobNo.place(x = 350, y = 220)
+        self.entAdd = Entry(self.root,bd=3)
+        self.entAdd.insert(0, self.l[4])
+        self.entAdd.place(x = 350, y = 260)
+        self.entDOB = Label(self.root, text = self.l[5], font = "Courier 13 bold", fg = "navy")
+        self.entDOB.place(x = 350, y = 300)
+        self.v = StringVar(self.root)
+        self.entGend = Label(self.root, text = self.l[6], font = "Courier 13 bold", fg = "navy")
+        self.entGend.place(x = 350, y = 340)
+        self.entEmail = Label(self.root, text = self.l[7], font = "Courier 13 bold", fg = "navy")
+        self.entEmail.place(x = 350, y = 380)
+        self.v1 = StringVar(self.root)
+        self.cbEmpStatus = ttk.Combobox(self.root, values = ["Labourer", "Farming/ Fishing","Retail trading","Business", "Engineer","Medical","Teaching","Civil Servant","Student"])
+        self.cbEmpStatus.place(x = 350, y = 420)
         self.cbEmpStatus.current(0)
-        """
-        self.imgAadhar = Image.open(self.l[9])
-        self.imgAadhar.resize((100,100),Image.ANTIALIAS)
-        self.imgAadharLabel = Label(self, image = ImageTk.PhotoImage(self.imgAadhar))
-        self.imgAadharLabel.pack()
+        self.lbCurrBal = Label(self.root, text = self.l[13], font = "Courier 13 bold", fg = "navy")
+        self.lbCurrBal.place(x = 350, y = 460)
         
-        self.imgPersonal = Image.open(self.l[10])
-        self.imgPersonal.resize((100,100),Image.ANTIALIAS)
-        self.imgPersonalLabel = Label(self, image = ImageTk.PhotoImage(self.imgPersonal))
-        self.imgPersonalLabel.pack()
+        self.lbANSAcc = Label(self.root, text = self.l[11], font = "Courier 13 bold", fg = "navy")
+        self.lbANSAcc.place(x = 350, y = 500)
         
-        """
+        self.btnSubmit = Button(self.root, text = "Update",command = self.updateInfo ,font = "Times 10 bold", border = 5, width = 15, bg='red2')
+        self.btnSubmit.place(x = 250,y = 540)
         
-        """
+    def updateInfo(self):
+        self.query = "update bank_accounts set Last_Name = '%s', Address = '%s' , EmpStatus = '%s' where ACC_NO='%s'"%(self.entLName.get(), self.entAdd.get(), self.cbEmpStatus.get(), self.l[11])
+        connection("PyBank", self.query)
+        messagebox.showinfo("Information", "Details Updated...")
         
-        self.img = Image.open(self.l[9])
-        self.render = ImageTk.PhotoImage(self.img)
-        self.another = PhotoImage(file = self.l[9])
-        self.imgLabel = Label(self, image = self.another)
-        self.imgLabel.pack()
-        """
-        
-        """
-        img = cv2.imread(self.l[9])
-        img2 = ImageTk.PhotoImage(img)
-        cv2.imshow("Image", img)
-        self.lb = Label(self, image = img2)
-        self.lb.pack()
-        """
-        #self.l[9] = self.l[9].replace("/","\")
-        print(self.l[9])
-        os.chdir("C:\wamp64\www\Banking_System\Aadhar_card")
-        self.photo = PhotoImage(file = self.l[9])
-        self.lb = Label(self, image = self.photo)
-        self.lb.pack()
-        
-        self.lbCurrBal = Label(self, text = self.l[13])
-        #self.lbCurrBal.config(text = self.l[13])
-        self.lbCurrBal.pack()
-        
-        self.btnSubmit = Button(self, text = "Submit")
-        self.btnSubmit.pack()
-        
-        
-
-
 
 class Create5:
     def __init__(self):
@@ -222,17 +201,7 @@ class Create5:
         self.btnGenerateReport.place(x = 350,y = 340)
         self.btnDelAcc = Button(self.root, text = "Delete Account", command = self.delaccount, font = "Courier 12 bold", fg = "navy", width = 20)
         self.btnDelAcc.place(x = 195, y = 420)
-        #self.can = Canvas(self.root, width = 800, height=100, bg = '#afeeee')
-        
-        #self.text = self.can.create_text(100, 10, text = "Hello Canvas")
-        
-        #self.can.pack()
-        #self.movement()
-        ### TRY TO DRAW AN ATM HERE ###
-        #self.canvas = Canvas(self, width = 500, height = 500)
-        #self.canvas.create_rectangle(75,75,350,350)
-        
-        #self.canvas.pack()
+
     def delACC(self):
         self.entDelAcc = Entry(self.root, bd = 3)
         self.entDelAcc.place(x = 240, y = 450)
@@ -258,24 +227,7 @@ class Create5:
         
         
         self.lbShowData = Label(self.root)
-        self.lbShowData.pack()
-        """
-        canvas = Canvas(self.root, width = 150, height = 10)
-        canvas.place(x = 400,y = 90)
-        line = canvas.create_line(1,5,10,5)
-        xspeed = 5
-        yspeed = 0
-        while True:
-            canvas.move(line, xspeed,yspeed)
-            pos = canvas.coords(line)
-            if  pos[2]>150:
-                xspeed = 0
-                break
-            self.root.update()
-            time.sleep(0.1)
-        
-        """
-        
+        self.lbShowData.pack()        
         self.cursor.execute(query)
         if bt == 1:
             for i in self.cursor:
@@ -337,7 +289,7 @@ class Create5:
         self.con = pymysql.connect(host = "localhost", user = "root", password = "", database = "PyBank")
         self.cursor = self.con.cursor()
         
-        self.prevPIN = simpledialog.askinteger("Informaion", "Ask previous PIN")
+        self.prevPIN = simpledialog.askinteger("Informaion", "Ask previous PIN", show="*")
         query = "SELECT PASSWORD FROM bank_accounts where acc_no = '%s'"%(getval2.h)
         k = 0
         
@@ -348,9 +300,9 @@ class Create5:
             k = i[0]
 
         if int(k) == int(self.prevPIN):
-            self.askNEWPIN = simpledialog.askinteger("Information","Enter New PIN")
-            self.askNEWPINCNF = simpledialog.askinteger("Information","Enter New PIN again")
-            if self.askNEWPIN == self.askNEWPINCNF:
+            self.askNEWPIN = simpledialog.askinteger("Information","Enter New PIN", show="*")
+            self.askNEWPINCNF = simpledialog.askinteger("Information","Enter New PIN again", show="*")
+            if int(self.askNEWPIN) == int(self.askNEWPINCNF):
                 query = "UPDATE bank_accounts set Password = '%s' where acc_no = '%s'"%(self.askNEWPIN,getval2.h)
                 self.cursor.execute(query)
                 logs(fileName, "\nPIN REGENERATED --- " + str(datetime.datetime.today()))
@@ -358,7 +310,7 @@ class Create5:
                 messagebox.showinfo("Information","PIN Regenerated Successfully")
             else:
                 logs(fileName, "\nTRYING PIN REGENERATION --- PASSWORD & CNFPASS NOT MATCH --- " + str(datetime.datetime.today()))
-                messagebox.showerror("Information","Two Password fields does not match")
+                messagebox.showerror("Information","Two Password fields does not match AND Only Numbers accepted!")
         else:
             logs(fileName, "\nTRIED PIN REGENERATION --- INVALID PREVIOUS PASSWORD --- "  + str(datetime.datetime.today()))
             messagebox.showerror("Information","Previous Password does not match")
@@ -443,36 +395,15 @@ def try1():
         l.insert(1,directory + fileName)
         print(l[1])
     print(fileName)
-    """
-    img = cv2.imread(fp)    
-    cv2.imshow("Image",img)
-    """
-    #l = fp.split("/")
-    #cv2.imwrite()
-    #print(l[-1])
+ 
     
     os.chdir(directory)
     img = Image.open(fp)
     img = img.save(fileName)
     
-    #shutil.copyfile(fp,path)
+    
     os.listdir()
     
-    
-    #cv2.imwrite(fileName, img)
-    """
-    directory= r"C:/wamp64/www/Banking_System/Logs_Client"
-    os.chdir(directory)
-    fileName =a + ".log"
-    
-    with open(fileName, 'w') as f:
-        f.write("Account Created On " + str(datetime.datetime.today())  + " --- ACCNO  = " + a)
-    """
-    
-    #logging.basicConfig(filename = fileName)
-    #logging.DEBUG("ACCOUNT CREATED ACCNO ")
-    #logging.log(logging.DEBUG, "ACCOUNT CREATED", filename= fileName)
-
 
 
 def checkData(accno,pin):
@@ -522,7 +453,7 @@ class Create7:
         self.entACCNO.place(x = 320, y = 120)
         self.lbPIN = Label(self.root, text = "        Pin : ", font = "Courier 15 bold", fg = "navy")
         self.lbPIN.place(x = 120, y= 160)
-        self.entPIN = Entry(self.root, bd = 3)
+        self.entPIN = Entry(self.root, bd = 3, show="*")
         self.entPIN.place(x = 320, y = 160)
         
         self.btnSubmit = Button(self.root, text = "Submit", command = self.passval, font = "Times 10 bold", border = 5, width = 15, bg='dodger blue')
@@ -534,22 +465,6 @@ class Create7:
         self.btn = Button(self.root, text = "Create Account", command = window1, bg='dodger blue', font = "Times 10 bold", border = 5, width = 15 )
         self.btn.place(x = 230,y = 320)
         
-    """
-    def checkData(self):
-        self.con = pymysql.connect(host="localhost",user="root",passwd="", database="PyBank")
-        self.cursor = self.con.cursor()
-        self.cursor.execute("SELECT PASSWORD, ACC_NO FROM bank_accounts where ACC_NO = '%s'"%(self.entACCNO.get()))
-        
-        for i in self.cursor:
-            self.l = i[0]
-        if str(self.l) == str(self.entPIN.get()) and self.count < 2:
-            window2()
-        else:
-            messagebox.showerror("Information","Password Does not match")                
-            window1()
-            self.count = self.count + 1
-            print(self.count)
-    """
     def passval(self):
         a = self.entACCNO.get()
         b = self.entPIN.get()
@@ -646,7 +561,7 @@ class Create6:
         
         if int(self.lbCurrBal.get())>500:
             if (re.search(regex, self.entEmail.get())):
-                self.sm = simpledialog.askinteger("PIN","Enter a new security PIN", parent = self.root)
+                self.sm = simpledialog.askinteger("PIN","Enter a new security PIN", parent = self.root, show="*")
                 query= "INSERT INTO bank_accounts VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"%(self.entFName.get(),\
                                                  self.entMName.get(),self.entLName.get(), self.entMobNo.get(), self.entAdd.get(),\
                                                  self.entDOB.get(), self.v.get(), self.entEmail.get(), self.cbEmpStatus.get(),l[0],l[1], self.ACC, self.sm, self.lbCurrBal.get())
